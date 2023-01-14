@@ -1,5 +1,6 @@
 const db = require("../utils/database")
 const { DataTypes } = require("sequelize")
+const Courses = require("./courses.models")
 
 const Videos = db.define(
    "videos",
@@ -22,10 +23,14 @@ const Videos = db.define(
          allowNull: false,
          unique: true,
       },
-      course_id: {
+      courseId: {
          type: DataTypes.INTEGER,
          allowNull: false,
          field: "course_id",
+         references: {
+            model: Courses,
+            key: "course_id",
+         },
       },
    },
    {
